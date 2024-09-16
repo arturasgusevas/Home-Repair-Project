@@ -1,7 +1,11 @@
+import TopBar from './components/TopBar/TopBar';
+import Search from './components/Search/Search';
+
 function App() {
   return (
     <div className='App'>
-      <h1>Home Repair Services</h1>
+      <TopBar />
+      <Search />
     </div>
   );
 }
