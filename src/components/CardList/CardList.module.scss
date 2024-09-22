@@ -1,27 +1,26 @@
-.cardList {
+.cardlist {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-  padding: 20px;
-  background-color: #f2f8ff;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-}
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(120px, 1fr)
+  ); /* Auto-fill ensures proper wrapping */
+  gap: 16px; /* Gap between the cards */
+  padding: 16px;
+  justify-items: center; /* Center cards in grid columns */
 
-@media (min-width: 480px) {
-  .cardList {
-    grid-template-columns: repeat(2, 1fr);
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(
+      3,
+      minmax(150px, 1fr)
+    ); /* On medium screens, 3 cards per row */
+    gap: 24px; /* Increase gap between cards */
   }
-}
 
-@media (min-width: 768px) {
-  .cardList {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (min-width: 1200px) {
-  .cardList {
-    grid-template-columns: repeat(6, 1fr);
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(
+      6,
+      minmax(150px, 1fr)
+    ); /* On large screens, 6 cards per row */
+    gap: 32px; /* Further increase gap between cards */
   }
 }

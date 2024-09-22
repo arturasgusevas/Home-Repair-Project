@@ -1,7 +1,9 @@
-import {FaForumbee} from 'react-icons/fa';
+import {FaForumbee, FaBars} from 'react-icons/fa';
 import styles from './TopBar.module.scss';
+import {useState} from 'react';
 
 function TopBar() {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <header className={styles.topbar}>
       <div className={styles.leftSection}>
@@ -10,16 +12,25 @@ function TopBar() {
           <FaForumbee size={32} className={styles.logoIcon} />
           <span className={styles.logoText}>Repair</span>
         </div>
-        <nav className={styles.nav}>
+        <nav className={`${styles.nav} ${isOpen ? styles.open : ''}`}>
           <ul>
             <li>
               <a href='/'>Home</a>
+            </li>
+            <li>
               <a href='/services'>Services</a>
-              <a href='about-us'>About Us</a>
+            </li>
+            <li>
+              <a href='/about-us'>About Us</a>
             </li>
           </ul>
         </nav>
       </div>
+
+      <button className={styles.hamburger} onClick={() => setIsOpen(!isOpen)}>
+        <FaBars />
+      </button>
+
       <button className={styles.login}>
         <p>Login/Sign-Up</p>
       </button>
