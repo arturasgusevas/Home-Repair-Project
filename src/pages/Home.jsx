@@ -1,5 +1,13 @@
+import Search from '../components/Search/Search';
+import CardList from '../components/CardList/CardList';
+
 function Home() {
-  return <h1>Home Page</h1>;
+  return (
+    <div>
+      <Search />
+      <CardList />
+    </div>
+  );
 }
 
 export default Home;
