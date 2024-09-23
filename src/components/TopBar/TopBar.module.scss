@@ -3,73 +3,133 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
+  width: 100%;
   box-shadow: 0 2px 1px rgba(167, 167, 167, 0.1);
+}
 
-  .leftSection {
-    display: flex;
-    align-items: center;
+.leftSection {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  .logoText {
+    font-family: Calibri;
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: -0.8px;
+    margin: 0 2px;
+    color: #007bff;
   }
 
-  .logo {
+  .logoIcon {
+    color: #007bff;
+    max-width: 32px;
+  }
+}
+
+.nav {
+  display: none;
+  transition: all 0.3s ease;
+
+  &.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: white;
+    padding: 20px;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
     display: flex;
     align-items: center;
+    gap: 20px;
 
-    .logoText {
+    a {
       font-family: Calibri;
-      font-size: 24px;
-      font-weight: 900;
-      letter-spacing: -0.8px;
-      margin: 0 2px;
-      color: #007bff;
-    }
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      color: #333;
 
-    .logoIcon {
-      color: #007bff;
-    }
-  }
-
-  .nav {
-    ul {
-      list-style: none;
-      margin: 0;
-    }
-
-    li {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-
-      a {
-        font-family: Calibri;
-        font-size: 14px;
-        font-weight: 600;
-        text-decoration: none;
-        color: #333;
-
-        &:hover {
-          cursor: pointer;
-          color: #007bff;
-        }
+      &:hover {
+        cursor: pointer;
+        color: #007bff;
       }
     }
   }
+}
+
+.hamburger {
+  display: block;
+  font-size: 30px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #007bff;
+}
+
+.login {
+  display: none;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 20px;
+
+  p {
+    padding: 0;
+    margin: 0;
+    font-family: Calibri;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  &:hover {
+    background-color: #0056b3;
+  }
+}
+
+@media (min-width: 768px) {
+  .nav {
+    display: flex;
+    position: static;
+
+    ul {
+      flex-direction: row;
+      gap: 20px;
+    }
+  }
+
+  .hamburger {
+    display: none;
+  }
 
   .login {
-    padding: 8px 16px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    p {
-      padding: 0;
-      margin: 0;
-      font-family: Calibri;
-      font-size: 14px;
-      font-weight: 500;
-    }
-    &:hover {
-      background-color: #0056b3;
-    }
+    display: block;
+  }
+}
+
+@media (min-width: 1200px) {
+  .topbar {
+    max-width: 1200px;
+    margin: 0 auto;
   }
 }

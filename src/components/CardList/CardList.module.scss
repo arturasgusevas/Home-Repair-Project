@@ -1,27 +1,22 @@
 .cardList {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
   gap: 20px;
-  padding: 20px;
-  background-color: #f2f8ff;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  padding: 16px;
+  justify-content: center;
+  width: 100%;
+  background: linear-gradient(to top, #7dbcff, white);
 }
 
-@media (min-width: 480px) {
-  .cardList {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.cardListContainer {
+  width: 60%;
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 16px;
 }
 
 @media (min-width: 768px) {
-  .cardList {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (min-width: 1200px) {
-  .cardList {
+  .cardListContainer {
     grid-template-columns: repeat(6, 1fr);
   }
 }

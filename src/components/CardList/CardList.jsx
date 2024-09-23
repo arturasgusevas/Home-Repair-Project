@@ -5,10 +5,11 @@ import styles from './CardList.module.scss';
 function CardList() {
   return (
     <div className={styles.cardList}>
-      {cardData.map((service) => {
-        const {id, icon: Icon, title} = service;
-        <Card key={id} icon={<Icon />} title={title} />;
-      })}
+      <div className={styles.cardListContainer}>
+        {cardData.map(({id, icon: Icon, title}) => (
+          <Card key={id} icon={<Icon />} title={title} />
+        ))}
+      </div>
     </div>
   );
 }
