@@ -1,9 +1,16 @@
+import {useNavigate, Link} from 'react-router-dom';
 import {FaForumbee, FaBars} from 'react-icons/fa';
 import styles from './TopBar.module.scss';
 import {useState} from 'react';
 
 function TopBar() {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    navigate('/login');
+  };
+
   return (
     <header className={styles.topbar}>
       <div className={styles.leftSection}>
@@ -15,13 +22,13 @@ function TopBar() {
         <nav className={`${styles.nav} ${isOpen ? styles.open : ''}`}>
           <ul>
             <li>
-              <a href='/'>Home</a>
+              <Link to='/'>Home</Link>
             </li>
             <li>
-              <a href='/services'>Services</a>
+              <Link to='/services'>Services</Link>
             </li>
             <li>
-              <a href='/about-us'>About Us</a>
+              <Link to='/about-us'>About Us</Link>
             </li>
           </ul>
         </nav>
@@ -31,7 +38,7 @@ function TopBar() {
         <FaBars />
       </button>
 
-      <button className={styles.login}>
+      <button className={styles.login} onClick={handleLogin}>
         <p>Login/Sign-Up</p>
       </button>
     </header>
