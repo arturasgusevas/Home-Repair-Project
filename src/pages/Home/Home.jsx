@@ -1,5 +1,6 @@
 import Search from '../../components/Search/Search';
 import CardList from '../../components/CardList/CardList';
+import BusinessCardList from '../../components/BusinessCardList/BusinessCardList';
 import styles from './Home.module.scss';
 
 function Home() {
@@ -9,6 +10,7 @@ function Home() {
         <Search />
       </div>
       <CardList />
+      <BusinessCardList />
     </main>
   );
 }
