@@ -1,0 +1,22 @@
+.home {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.searchWrapper {
+  display: flex;
+  justify-content: center;
+  padding: 20px auto;
+}
+
+.searchWrapper > .container {
+  width: 50%;
+}
+
+@media (max-width: 768px) {
+  .searchWrapper > .container {
+    width: 90%;
+  }
+}

@@ -1,17 +1,21 @@
 .cardList {
   display: flex;
-  gap: 20px;
   padding: 16px;
   justify-content: center;
   width: 100%;
-  background: linear-gradient(to right, to left, #072d55, white);
+  background: linear-gradient(
+    to left,
+    transparent 0%,
+    #9ab3ce 50%,
+    transparent 100%
+  );
 }
 
 .cardListContainer {
   width: 60%;
-  max-width: 100%;
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
 }
 

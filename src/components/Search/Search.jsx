@@ -3,7 +3,7 @@ import {FaMagnifyingGlass} from 'react-icons/fa6';
 
 function Search() {
   return (
-    <main className={styles.container}>
+    <div className={styles.container}>
       <h1 className={styles.heading}>
         Find Home <span className={styles.blue}>Service/Repair</span>{' '}
         Near&nbsp;You
@@ -14,7 +14,7 @@ function Search() {
           <FaMagnifyingGlass />
         </button>
       </div>
-    </main>
+    </div>
   );
 }
 
