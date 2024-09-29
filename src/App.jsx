@@ -1,8 +1,7 @@
 import './App.css';
 import TopBar from './components/TopBar/TopBar';
-import CardList from './components/CardList/CardList';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import Home from './pages/Home';
+import Home from './pages/Home/Home';
 import Services from './pages/Services';
 import AboutUs from './pages/AboutUs';
 import Login from './pages/Login';
@@ -20,7 +19,6 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/search/:category' element={<SearchCategory />} />
         </Routes>
-        <CardList />
       </div>
     </Router>
   );
