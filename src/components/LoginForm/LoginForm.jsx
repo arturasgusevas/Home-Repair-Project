@@ -1,9 +1,9 @@
 import {useState, useContext} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {UserContext} from '../../context/UserContext';
-import styles from './Login.module.scss';
+import styles from './LoginForm.module.scss';
 
-const Login = () => {
+const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
@@ -25,7 +25,7 @@ const Login = () => {
   };
 
   return (
-    <div className={styles.loginContainer}>
+    <div className={styles.loginForm}>
       <form onSubmit={handleLogin}>
         <h2>Login</h2>
         {error && <p className={styles.error}>{error}</p>}
@@ -47,4 +47,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginForm;

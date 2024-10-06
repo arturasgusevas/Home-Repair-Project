@@ -5,7 +5,7 @@ import {UserProvider} from './context/UserContext';
 import Home from './pages/Home/Home';
 import Services from './pages/Services';
 import AboutUs from './pages/AboutUs';
-import Login from './pages/Login';
+import Login from './pages/Login/Login';
 import SearchCategory from './pages/SearchCategory';
 
 function App() {

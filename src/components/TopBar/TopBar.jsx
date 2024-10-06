@@ -6,7 +6,7 @@ import styles from './TopBar.module.scss';
 import {useState} from 'react';
 
 function TopBar() {
-  const [user, setUser] = useContext(UserContext);
+  const {user, setUser} = useContext(UserContext);
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
