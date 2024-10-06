@@ -1,14 +1,22 @@
+import {useContext} from 'react';
+import {UserContext} from '../../context/UserContext';
 import {useNavigate, Link} from 'react-router-dom';
 import {FaForumbee, FaBars} from 'react-icons/fa';
 import styles from './TopBar.module.scss';
 import {useState} from 'react';
 
 function TopBar() {
+  const {user, setUser} = useContext(UserContext);
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = () => {
     navigate('/login');
+  };
+
+  const handleLogout = () => {
+    setUser(null);
+    localStorage.removeItem('user');
   };
 
   return (
@@ -38,9 +46,18 @@ function TopBar() {
         <FaBars />
       </button>
 
-      <button className={styles.login} onClick={handleLogin}>
-        <p>Login/Sign-Up</p>
-      </button>
+      {user ? (
+        <div className={styles.userInfo}>
+          <p>{`Hello, ${user.username}`}</p>
+          <button onClick={handleLogout} className={styles.logout}>
+            Logout
+          </button>
+        </div>
+      ) : (
+        <button className={styles.login} onClick={handleLogin}>
+          <p>Login/Sign-Up</p>
+        </button>
+      )}
     </header>
   );
 }
