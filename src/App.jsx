@@ -5,7 +5,7 @@ import Home from './pages/Home/Home';
 import Services from './pages/Services';
 import AboutUs from './pages/AboutUs';
 import Login from './pages/Login';
-import SearchCategory from './pages/SearchCategory';
+import SearchCategory from './pages/SearchCategory/SearchCategory';
 
 function App() {
   return (

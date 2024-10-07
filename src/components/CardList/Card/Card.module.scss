@@ -30,3 +30,21 @@
     transition: all 0.3s ease;
   }
 }
+
+.horizontalCard {
+  max-width: none;
+  width: 100%;
+  flex-direction: row;
+  padding: 5px;
+  box-sizing: border-box;
+
+  .icon {
+    margin-right: 10px;
+    font-size: 18px;
+  }
+
+  .title {
+    text-align: left;
+    font-size: 16px;
+  }
+}
