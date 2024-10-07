@@ -1,9 +1,9 @@
 import styles from './BusinessCard.module.scss';
 import PropTypes from 'prop-types';
 
-function BusinessCard({photo, category, title, name, address}) {
+function BusinessCard({photo, category, title, name, address, className}) {
   return (
-    <div className={styles.businessCard}>
+    <div className={`${styles.businessCard} ${className}`}>
       <img src={photo} alt={title} className={styles.photo} />
       <div className={styles.cardContent}>
         <span className={styles.category}>{category}</span>
@@ -21,7 +21,8 @@ BusinessCard.propTypes = {
   category: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  address: PropTypes.string.isRequired
+  address: PropTypes.string.isRequired,
+  className: PropTypes.string
 };
 
 export default BusinessCard;

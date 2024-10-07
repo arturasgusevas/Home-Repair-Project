@@ -5,8 +5,8 @@ import {UserProvider} from './context/UserContext';
 import Home from './pages/Home/Home';
 import Services from './pages/Services';
 import AboutUs from './pages/AboutUs';
+import SearchCategory from './pages/SearchCategory/SearchCategory';
 import Login from './pages/Login/Login';
-import SearchCategory from './pages/SearchCategory';
 
 function App() {
   return (

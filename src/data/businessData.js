@@ -62,6 +62,70 @@ const businessData = [
     name: 'FixAll',
     address: '159 Oak St, Uptown',
     photo: 'https://picsum.photos/400/300?random=8'
+  },
+  {
+    id: 9,
+    category: 'Cleaning',
+    title: 'Sparkle & Shine Cleaning',
+    name: 'CleanItUp',
+    address: '123 Clean St, Cityville',
+    photo: 'https://picsum.photos/400/300?random=9'
+  },
+  {
+    id: 10,
+    category: 'Repair',
+    title: 'All-in-One Repair Services',
+    name: 'FixAll',
+    address: '159 Oak St, Uptown',
+    photo: 'https://picsum.photos/400/300?random=10'
+  },
+  {
+    id: 11,
+    category: 'Painting',
+    title: 'Pro Paint & Decor',
+    name: 'ColorSplash',
+    address: '222 Colorful St, Paintsville',
+    photo: 'https://picsum.photos/400/300?random=11'
+  },
+  {
+    id: 12,
+    category: 'Shifting',
+    title: 'Lift & Shift Movers',
+    name: 'EasyMove',
+    address: '555 Move St, Boxville',
+    photo: 'https://picsum.photos/400/300?random=12'
+  },
+  {
+    id: 13,
+    category: 'Plumbing',
+    title: 'Pipe Masters',
+    name: 'WaterFix',
+    address: '456 Pipe Rd, Townsville',
+    photo: 'https://picsum.photos/400/300?random=13'
+  },
+  {
+    id: 14,
+    category: 'Electrical',
+    title: 'Volt Solutions',
+    name: 'BrightFix',
+    address: '789 Electric Ave, Power City',
+    photo: 'https://picsum.photos/400/300?random=14'
+  },
+  {
+    id: 15,
+    category: 'Cleaning',
+    title: 'Spotless Homes Cleaning',
+    name: 'ShinePro',
+    address: '321 Neat St, Cleantown',
+    photo: 'https://picsum.photos/400/300?random=15'
+  },
+  {
+    id: 16,
+    category: 'Cleaning',
+    title: 'Deep Clean Experts',
+    name: 'UltraClean',
+    address: '654 Dusty Rd, Cleanopolis',
+    photo: 'https://picsum.photos/400/300?random=16'
   }
 ];
 
