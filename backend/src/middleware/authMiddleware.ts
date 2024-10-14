@@ -2,7 +2,7 @@ import {Request, Response, NextFunction} from 'express';
 import jwt from 'jsonwebtoken';
 
 interface AuthRequest extends Request {
-  currentUser?: string | jwt.JwtPayload;
+  currentUser?: any;
 }
 
 const authMiddleware = (
@@ -13,7 +13,7 @@ const authMiddleware = (
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return res.status(401).send({error: 'Not authenticated'});
+    return res.status(401).json({error: 'Not authenticated'});
   }
 
   const token = authHeader.split(' ')[1];
@@ -22,7 +22,7 @@ const authMiddleware = (
     req.currentUser = payload;
     next();
   } catch (err) {
-    return res.status(401).send({error: 'Not authenticated'});
+    return res.status(401).json({error: 'Not authenticated'});
   }
 };
 
