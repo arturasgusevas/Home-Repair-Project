@@ -1,15 +1,20 @@
-const express = require('express');
-const User = require('../models/User');
-const authMiddleware = require('../middleware/authMiddleware');
+import express, {Request, Response} from 'express';
+import User from '../models/Users';
+import authMiddleware from '../middleware/authMiddleware';
+
 const router = express.Router();
 
-router.get('/', authMiddleware, async (req, res) => {
-  try {
-    const users = await User.find();
-    return res.json(users);
-  } catch (err) {
-    return res.status(500).json(err);
+router.get(
+  '/',
+  authMiddleware,
+  async (req: Request, res: Response): Promise<void> => {
+    try {
+      const users = await User.find();
+      res.json(users);
+    } catch (err) {
+      res.status(500).json(err);
+    }
   }
-});
+);
 
-module.exports = router;
+export default router;

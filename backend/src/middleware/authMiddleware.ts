@@ -13,7 +13,8 @@ const authMiddleware = (
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return res.status(401).json({error: 'Not authenticated'});
+    res.status(401).json({error: 'Not authenticated'});
+    return;
   }
 
   const token = authHeader.split(' ')[1];
@@ -22,7 +23,8 @@ const authMiddleware = (
     req.currentUser = payload;
     next();
   } catch (err) {
-    return res.status(401).json({error: 'Not authenticated'});
+    res.status(401).json({error: 'Not authenticated'});
+    return;
   }
 };
 

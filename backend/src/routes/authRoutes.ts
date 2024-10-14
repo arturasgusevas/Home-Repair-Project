@@ -1,33 +1,31 @@
-const express = require('express');
-const User = require('../models/User');
-const {generateToken} = require('../utils/password');
-const router = express.Router();
+import {Request, Response, NextFunction} from 'express';
+import jwt from 'jsonwebtoken';
 
-router.post('/register', async (req, res) => {
+interface AuthRequest extends Request {
+  currentUser?: any;
+}
+
+const authMiddleware = (
+  req: AuthRequest,
+  res: Response,
+  next: NextFunction
+): void => {
+  const authHeader = req.headers.authorization;
+
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    res.status(401).send({error: 'Not authenticated'});
+    return;
+  }
+
+  const token = authHeader.split(' ')[1];
+
   try {
-    const user = req.body;
-    const existingUser = await User.findOne({email: user.email});
-    if (existingUser) {
-      return res.status(400).json({message: 'User already exists'});
-    }
-    const newUser = new User(user);
-    await newUser.save();
-    return res.status(201).json({message: 'User registered successfully'});
-  } catch (error) {
-    return res
-      .status(500)
-      .json({message: 'Error registering user', error: error.message});
+    const payload = jwt.verify(token, process.env.JWT_SECRET as string);
+    req.currentUser = payload;
+    next();
+  } catch (err) {
+    res.status(401).send({error: 'Not authenticated'});
   }
-});
+};
 
-router.post('/login', async (req, res) => {
-  const {email, password} = req.body;
-  const user = await User.findOne({email});
-  if (!user || !(await user.isCorrectPassword(password))) {
-    return res.status(401).json({message: 'Incorrect email or password'});
-  }
-  const token = generateToken({id: user._id});
-  return res.status(200).json({token, user});
-});
-
-module.exports = router;
+export default authMiddleware;
