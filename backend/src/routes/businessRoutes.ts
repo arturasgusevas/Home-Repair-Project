@@ -1,15 +1,16 @@
-const express = require('express');
-const router = express.Router();
-const {
+import express from 'express';
+import {
   getBusinesses,
   getBusinessById,
   getBusinessesByCategory,
   addBusiness
-} = require('../controllers/businessController');
+} from '../controllers/bisinessController';
+
+const router = express.Router();
 
 router.get('/', getBusinesses);
 router.get('/category/:category', getBusinessesByCategory);
 router.get('/:id', getBusinessById);
 router.post('/', addBusiness);
 
-module.exports = router;
+export default router;
