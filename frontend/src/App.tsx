@@ -8,7 +8,7 @@ import AboutUs from './pages/AboutUs';
 import SearchCategory from './pages/SearchCategory/SearchCategory';
 import Login from './pages/Login/Login';
 
-function App() {
+const App: React.FC = () => {
   return (
     <UserProvider>
       <Router>
@@ -25,6 +25,6 @@ function App() {
       </Router>
     </UserProvider>
   );
-}
+};
 
 export default App;

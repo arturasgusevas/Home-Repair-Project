@@ -1,4 +1,13 @@
-const businessData = [
+interface Business {
+  id: number;
+  category: string;
+  title: string;
+  name: string;
+  address: string;
+  photo: string;
+}
+
+const businessData: Business[] = [
   {
     id: 1,
     category: 'Cleaning',

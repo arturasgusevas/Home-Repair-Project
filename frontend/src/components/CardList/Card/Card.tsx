@@ -1,8 +1,20 @@
 import {useNavigate} from 'react-router-dom';
-import PropTypes from 'prop-types';
+import {IconType} from 'react-icons';
 import styles from './Card.module.scss';
 
-function Card({icon: Icon, title, className, layout = 'square'}) {
+interface CardProps {
+  icon: IconType;
+  title: string;
+  className?: string;
+  layout?: 'square' | 'horizontal';
+}
+
+const Card: React.FC<CardProps> = ({
+  icon: Icon,
+  title,
+  className = '',
+  layout = 'square'
+}) => {
   const navigate = useNavigate();
 
   const handleCardClick = () => {
@@ -20,13 +32,6 @@ function Card({icon: Icon, title, className, layout = 'square'}) {
       <h2 className={styles.title}>{title}</h2>
     </div>
   );
-}
-
-Card.propTypes = {
-  icon: PropTypes.elementType.isRequired,
-  title: PropTypes.string.isRequired,
-  className: PropTypes.string,
-  layout: PropTypes.string
 };
 
 export default Card;

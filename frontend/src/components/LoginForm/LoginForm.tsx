@@ -6,11 +6,17 @@ import styles from './LoginForm.module.scss';
 const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(null);
-  const {setUser} = useContext(UserContext);
+  const [error, setError] = useState<string | null>(null);
+  const userContext = useContext(UserContext);
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  if (!userContext) {
+    throw new Error('useContext must be used within a UserProvider');
+  }
+
+  const {setUser} = userContext;
+
+  const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
 
     if (username === '' || password === '') {

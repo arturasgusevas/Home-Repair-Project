@@ -1,14 +1,19 @@
-import {useContext} from 'react';
+import {useContext, useState} from 'react';
 import {UserContext} from '../../context/UserContext';
 import {useNavigate, Link} from 'react-router-dom';
 import {FaForumbee, FaBars} from 'react-icons/fa';
 import styles from './TopBar.module.scss';
-import {useState} from 'react';
 
-function TopBar() {
-  const {user, setUser} = useContext(UserContext);
+const TopBar = () => {
+  const userContext = useContext(UserContext);
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
+
+  if (!userContext) {
+    throw new Error('useContext must be used within a UserProvider');
+  }
+
+  const {user, setUser} = userContext;
 
   const handleLogin = () => {
     navigate('/login');
@@ -60,6 +65,6 @@ function TopBar() {
       )}
     </header>
   );
-}
+};
 
 export default TopBar;

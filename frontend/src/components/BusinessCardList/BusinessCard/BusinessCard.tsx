@@ -1,7 +1,22 @@
 import styles from './BusinessCard.module.scss';
-import PropTypes from 'prop-types';
 
-function BusinessCard({photo, category, title, name, address, className}) {
+interface BusinessCardProps {
+  photo: string;
+  category: string;
+  title: string;
+  name: string;
+  address: string;
+  className?: string;
+}
+
+const BusinessCard: React.FC<BusinessCardProps> = ({
+  photo,
+  category,
+  title,
+  name,
+  address,
+  className = ''
+}) => {
   return (
     <div className={`${styles.businessCard} ${className}`}>
       <img src={photo} alt={title} className={styles.photo} />
@@ -14,15 +29,6 @@ function BusinessCard({photo, category, title, name, address, className}) {
       </div>
     </div>
   );
-}
-
-BusinessCard.propTypes = {
-  photo: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  address: PropTypes.string.isRequired,
-  className: PropTypes.string
 };
 
 export default BusinessCard;
