@@ -2,7 +2,7 @@ import BusinessCard from '../../components/BusinessCardList/BusinessCard/Busines
 import businessData from '../../data/businessData';
 import styles from './BusinessCardList.module.scss';
 
-function BusinessCardList() {
+const BusinessCardList: React.FC = () => {
   return (
     <div className={styles.businessCardList}>
       {businessData.map((business) => (
@@ -17,6 +17,6 @@ function BusinessCardList() {
       ))}
     </div>
   );
-}
+};
 
 export default BusinessCardList;

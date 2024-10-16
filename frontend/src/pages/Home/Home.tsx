@@ -1,9 +1,10 @@
+import React from 'react';
 import Search from '../../components/Search/Search';
 import CardList from '../../components/CardList/CardList';
 import BusinessCardList from '../../components/BusinessCardList/BusinessCardList';
 import styles from './Home.module.scss';
 
-function Home() {
+const Home: React.FC = () => {
   return (
     <main className={styles.home}>
       <div className={styles.searchWrapper}>
@@ -13,6 +14,6 @@ function Home() {
       <BusinessCardList />
     </main>
   );
-}
+};
 
 export default Home;

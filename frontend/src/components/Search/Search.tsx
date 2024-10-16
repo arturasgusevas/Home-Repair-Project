@@ -1,7 +1,8 @@
 import styles from './Search.module.scss';
 import {FaMagnifyingGlass} from 'react-icons/fa6';
+import React from 'react';
 
-function Search() {
+const Search: React.FC = () => {
   return (
     <div className={styles.container}>
       <h1 className={styles.heading}>
@@ -16,6 +17,6 @@ function Search() {
       </div>
     </div>
   );
-}
+};
 
 export default Search;

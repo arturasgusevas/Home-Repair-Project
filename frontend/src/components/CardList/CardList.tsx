@@ -1,8 +1,8 @@
 import Card from './Card/Card';
-import cardData from '../../data/cardData.js';
+import cardData from '../../data/cardData';
 import styles from './CardList.module.scss';
 
-function CardList() {
+const CardList: React.FC = () => {
   return (
     <div className={styles.cardList}>
       <div className={styles.cardListContainer}>
@@ -12,6 +12,6 @@ function CardList() {
       </div>
     </div>
   );
-}
+};
 
 export default CardList;

@@ -7,7 +7,15 @@ import {
   MdOutlineElectricBolt
 } from 'react-icons/md';
 
-const cardData = [
+import {IconType} from 'react-icons';
+
+interface CardData {
+  id: number;
+  icon: IconType;
+  title: string;
+}
+
+const cardData: CardData[] = [
   {id: 1, icon: MdOutlineCleaningServices, title: 'Cleaning'},
   {id: 2, icon: MdBuild, title: 'Repair'},
   {id: 3, icon: MdBrush, title: 'Painting'},
