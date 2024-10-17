@@ -3,8 +3,8 @@ import TopBar from './components/TopBar/TopBar';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import {UserProvider} from './context/UserContext';
 import Home from './pages/Home/Home';
-import Services from './pages/Services';
-import AboutUs from './pages/AboutUs';
+import Services from './pages/Services/Services';
+import AboutUs from './pages/AboutUs/AboutUs';
 import SearchCategory from './pages/SearchCategory/SearchCategory';
 import Login from './pages/Login/Login';
 
