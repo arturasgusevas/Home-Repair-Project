@@ -42,3 +42,18 @@ export const deleteBooking = async (
     res.status(500).json({message: 'Failed to delete booking'});
   }
 };
+
+export const getBookingsByBusinessAndDate = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const {businessId, date} = req.params;
+    const bookings = await Booking.find({businessId, date});
+    res.json(bookings);
+  } catch (error) {
+    res.status(500).json({
+      message: 'Failed to retrieve bookings for the specified business and date'
+    });
+  }
+};
