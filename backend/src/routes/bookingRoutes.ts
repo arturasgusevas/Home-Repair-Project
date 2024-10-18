@@ -1,14 +1,16 @@
-import express from 'express';
+import {Router} from 'express';
 import {
   getBookingsByUser,
   addBooking,
-  deleteBooking
+  deleteBooking,
+  getBookingsByBusinessAndDate
 } from '../controllers/bookingController';
 
-const router = express.Router();
+const router = Router();
 
 router.get('/user/:email', getBookingsByUser);
 router.post('/', addBooking);
 router.delete('/:id', deleteBooking);
+router.get('/business/:businessId/date/:date', getBookingsByBusinessAndDate);
 
 export default router;
