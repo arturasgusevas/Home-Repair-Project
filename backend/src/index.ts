@@ -19,7 +19,7 @@ connectDB();
 app.use('/categories', categoryRoutes);
 app.use('/businesses', businessRoutes);
 app.use('/bookings', bookingRoutes);
-app.use('/users', authMiddleware, userRoutes); // Ensure authMiddleware works
+app.use('/users', authMiddleware, userRoutes);
 app.use('/auth', authRoutes);
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
