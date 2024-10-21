@@ -2,8 +2,13 @@ import {StrictMode} from 'react';
 import {createRoot} from 'react-dom/client';
 import App from './App.jsx';
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>
-);
+const container = document.getElementById('root');
+if (container) {
+  createRoot(container).render(
+    <StrictMode>
+      <App />
+    </StrictMode>
+  );
+} else {
+  console.error('Root container not found');
+}

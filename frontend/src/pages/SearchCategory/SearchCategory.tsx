@@ -17,7 +17,6 @@ const SearchCategory: React.FC = () => {
   }
 
   const formattedCategory = category.replace(/-/g, '').toLowerCase();
-
   const filteredBusinesses = businessData.filter(
     (business) => business.category.toLowerCase() === formattedCategory
   );
