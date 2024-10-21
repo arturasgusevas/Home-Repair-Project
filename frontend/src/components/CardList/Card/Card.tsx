@@ -28,7 +28,7 @@ const Card: React.FC<CardProps> = ({
       }`}
       onClick={handleCardClick}
     >
-      <div className={styles.icon}>{Icon && <Icon size={32} />}</div>
+      <div className={styles.icon}>{Icon && <Icon size={24} />}</div>
       <h2 className={styles.title}>{title}</h2>
     </div>
   );
