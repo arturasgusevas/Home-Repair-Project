@@ -1,4 +1,3 @@
-import React from 'react';
 import Search from '../../components/Search/Search';
 import CardList from '../../components/CardList/CardList';
 import BusinessCardList from '../../components/BusinessCardList/BusinessCardList';
