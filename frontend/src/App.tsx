@@ -7,6 +7,7 @@ import Services from './pages/Services/Services';
 import AboutUs from './pages/AboutUs/AboutUs';
 import SearchCategory from './pages/SearchCategory/SearchCategory';
 import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
 
 const App: React.FC = () => {
   return (
@@ -19,6 +20,7 @@ const App: React.FC = () => {
             <Route path='/services' element={<Services />} />
             <Route path='/about-us' element={<AboutUs />} />
             <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
             <Route path='/search/:category' element={<SearchCategory />} />
           </Routes>
         </div>
