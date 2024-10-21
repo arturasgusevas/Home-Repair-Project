@@ -1,10 +1,11 @@
 import {useState, useContext} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {UserContext} from '../../context/UserContext';
+import axios from 'axios';
 import styles from './LoginForm.module.scss';
 
 const LoginForm = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
   const userContext = useContext(UserContext);
@@ -16,18 +17,28 @@ const LoginForm = () => {
 
   const {setUser} = userContext;
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (username === '' || password === '') {
+    if (email === '' || password === '') {
       setError('All fields are required');
       return;
     }
 
-    const userData = {username};
-    setUser(userData);
-    localStorage.setItem('user', JSON.stringify(userData));
-    navigate('/');
+    try {
+      const response = await axios.post('http://localhost:5000/auth/login', {
+        email,
+        password
+      });
+      const userData = response.data;
+
+      setUser(userData);
+      localStorage.setItem('user', JSON.stringify(userData));
+      navigate('/');
+    } catch (error) {
+      setError('Incorrect email or password');
+      console.error('Failed to login:', error);
+    }
   };
 
   return (
@@ -36,10 +47,10 @@ const LoginForm = () => {
         <h2>Login</h2>
         {error && <p className={styles.error}>{error}</p>}
         <input
-          type='text'
-          placeholder='Username'
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          type='email'
+          placeholder='Email'
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type='password'
