@@ -1,64 +1,95 @@
-import {useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import {Formik, Form, Field, ErrorMessage} from 'formik';
+import {useNavigate, Link} from 'react-router-dom';
 import axios from 'axios';
-import styles from '../../styles/authForm.module.scss';
+import {RegisterFormValues} from '../../types';
+import {registerValidationSchema} from '../../validationSchemas';
+import styles from '../../styles/AuthForm.module.scss';
+
+const initialValues: RegisterFormValues = {
+  name: '',
+  email: '',
+  password: ''
+};
 
 const RegisterForm = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  const handleRegister = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (name === '' || email === '' || password === '') {
-      setError('All fields are required');
-      return;
-    }
-
+  const handleSubmit = async (values: RegisterFormValues) => {
     try {
-      await axios.post('http://localhost:5000/auth/register', {
-        name,
-        email,
-        password
-      });
+      await axios.post('http://localhost:5000/auth/register', values);
       navigate('/login');
     } catch (error) {
-      setError('Registration failed');
       console.error('Failed to register:', error);
     }
   };
 
   return (
     <div className={styles.authForm}>
-      <form onSubmit={handleRegister}>
-        <h2>Register</h2>
-        {error && <p className={styles.error}>{error}</p>}
-        <input
-          type='text'
-          placeholder='Name'
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <input
-          type='email'
-          placeholder='Email'
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type='password'
-          placeholder='Password'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type='submit'>Register</button>
-        <p className={styles.switch}>
-          Already have an account? <a href='/login'>Login here</a>
-        </p>
-      </form>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={registerValidationSchema}
+        onSubmit={handleSubmit}
+      >
+        {({isSubmitting}) => (
+          <Form>
+            <h2>Register</h2>
+            <div className={styles.formGroup}>
+              <Field
+                type='text'
+                name='name'
+                placeholder='Name'
+                className={styles.input}
+              />
+              <ErrorMessage
+                name='name'
+                component='div'
+                className={styles.error}
+              />
+            </div>
+
+            <div className={styles.formGroup}>
+              <Field
+                type='email'
+                name='email'
+                placeholder='Email'
+                className={styles.input}
+              />
+              <ErrorMessage
+                name='email'
+                component='div'
+                className={styles.error}
+              />
+            </div>
+
+            <div className={styles.formGroup}>
+              <Field
+                type='password'
+                name='password'
+                placeholder='Password'
+                className={styles.input}
+              />
+              <ErrorMessage
+                name='password'
+                component='div'
+                className={styles.error}
+              />
+            </div>
+
+            <button
+              type='submit'
+              disabled={isSubmitting}
+              className={styles.button}
+            >
+              Register
+            </button>
+            <div className={styles.switch}>
+              <p>
+                Already have an account? <Link to='/login'>Login here</Link>
+              </p>
+            </div>
+          </Form>
+        )}
+      </Formik>
     </div>
   );
 };
