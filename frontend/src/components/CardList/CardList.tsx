@@ -1,5 +1,4 @@
-import {useEffect, useState} from 'react';
-import axios from 'axios';
+import {useCategories} from '../../hooks/useCategories';
 import Card from './Card/Card';
 import styles from './CardList.module.scss';
 import {
@@ -12,11 +11,6 @@ import {
 } from 'react-icons/md';
 import {IconType} from 'react-icons';
 
-interface Category {
-  name: string;
-  iconUrl: string;
-}
-
 const iconMap: Record<string, IconType> = {
   Cleaning: MdOutlineCleaningServices,
   Repair: MdBuild,
@@ -27,23 +21,15 @@ const iconMap: Record<string, IconType> = {
 };
 
 function CardList() {
-  const [categories, setCategories] = useState<Category[]>([]);
+  const {data: categories, error, isLoading} = useCategories();
 
-  useEffect(() => {
-    axios
-      .get('http://localhost:5000/categories')
-      .then((response) => {
-        setCategories(response.data);
-      })
-      .catch((error) => {
-        console.error('Failed to fetch categories:', error);
-      });
-  }, []);
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error loading categories</div>;
 
   return (
     <div className={styles.cardList}>
       <div className={styles.cardListContainer}>
-        {categories.map((category) => {
+        {categories?.map((category) => {
           const Icon = iconMap[category.name] || MdOutlineCleaningServices;
           return <Card key={category.name} title={category.name} icon={Icon} />;
         })}
