@@ -1,11 +1,12 @@
 import {Formik, Form, Field, ErrorMessage} from 'formik';
-import {useNavigate, Link} from 'react-router-dom';
-import axios from 'axios';
-import {RegisterFormValues} from '../../types';
 import {registerValidationSchema} from '../../validationSchemas';
-import styles from '../../styles/AuthForm.module.scss';
+import {useRegisterUser} from '../../hooks/useRegisterUser';
+import {useNavigate, Link} from 'react-router-dom';
+import {User} from '../../types/users';
+import styles from '../../styles/authForm.module.scss';
 
-const initialValues: RegisterFormValues = {
+const initialValues: User = {
+  id: '',
   name: '',
   email: '',
   password: ''
@@ -13,14 +14,17 @@ const initialValues: RegisterFormValues = {
 
 const RegisterForm = () => {
   const navigate = useNavigate();
+  const {mutate} = useRegisterUser();
 
-  const handleSubmit = async (values: RegisterFormValues) => {
-    try {
-      await axios.post('http://localhost:5000/auth/register', values);
-      navigate('/login');
-    } catch (error) {
-      console.error('Failed to register:', error);
-    }
+  const handleSubmit = (values: User) => {
+    mutate(values, {
+      onSuccess: () => {
+        navigate('/login');
+      },
+      onError: (error) => {
+        console.error('Failed to register:', error);
+      }
+    });
   };
 
   return (
@@ -75,11 +79,7 @@ const RegisterForm = () => {
               />
             </div>
 
-            <button
-              type='submit'
-              disabled={isSubmitting}
-              className={styles.button}
-            >
+            <button type='submit' disabled={isSubmitting}>
               Register
             </button>
             <div className={styles.switch}>
